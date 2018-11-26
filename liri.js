@@ -41,7 +41,7 @@ switch (command) {
         movieThis();
         break;
     case 'do-what-it-says':
-        logCommand();
+        // logCommand();
         randomFunction();
         break;
 };
@@ -57,7 +57,6 @@ function concertThis() {
         }
         else {
             bandName += nodeArgs[i];
-
         }
     }
 
@@ -68,12 +67,12 @@ function concertThis() {
         var bandEvents = [];
         for (var i = 0; i < respsonseData.length; i++) {
             bandEvents.push(
-            bandResponse.data[i].venue.name,
-            bandResponse.data[i].venue.city,
-            bandResponse.data[i].venue.region,
-            bandResponse.data[i].venue.country,
-            moment(bandResponse.data[i].datetime).format("MM/DD/YYYY"),
-            "-------------"
+                respsonseData[i].venue.name,
+                respsonseData[i].venue.city,
+                respsonseData[i].venue.region,
+                respsonseData[i].venue.country,
+                moment(respsonseData[i].datetime).format("MM/DD/YYYY"),
+                "-------------"
             );
         }
         console.log(JSON.stringify(bandEvents, null, 3))
@@ -94,10 +93,11 @@ function spotifySong() {
         }
         else {
             songName += nodeArgs[i];
-
         }
     }
 
+    // sets default song parameter if user does not enter song
+    // -- does not add "The Sign" by Ace of Base as listed in instructions
     if (songName === "") {
         song = "The Sign"
     } else {
@@ -162,10 +162,40 @@ function movieThis() {
 }
 
 // do-what-it-says function
+function randomFunction() {
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        // If code experiences any errors, it will log error to console
+        if (error) {
+            return console.log(error);
+        }
+
+        var output = data.split(",")
+
+        for (var i = 0; i < output.length; i++) {
+            console.log(output[i])
+        }
+
+        // switch (output[0]) {
+        //     case 'concert-this':
+        //         logCommand();
+        //         concertThis();
+        //         break;
+        //     case 'spotify-this-song':
+        //         logCommand();
+        //         spotifySong();
+        //         break;
+        //     case 'movie-this':
+        //         logCommand();
+        //         movieThis();
+        //         break;
+        // };
+    })
+}
 
 // log command function -- logs command to log.txt
 function logCommand() {
-    var loggedCommand = `${command}\n-------------\n`;
+    var timeAdded = moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
+    var loggedCommand = `${command}\n${timeAdded}\n-------------\n`;
     fs.appendFile("log.txt", loggedCommand, function (err) {
         // If an error was experienced, it log it to console
         if (err) {
@@ -173,7 +203,7 @@ function logCommand() {
         }
         // If no error is experienced, it logs in console that the command was successfully added to log.txt
         else {
-            console.log("Command Added to log.txt!");
+            console.log("\nCommand Added to log.txt!\n");
         }
     });
 };
@@ -187,7 +217,7 @@ function logData(data) {
         }
         // If no error is experienced, it logs in console that the command was successfully added to log.txt
         else {
-            console.log("Data Added to log.txt!");
+            console.log("\nData Added to log.txt!\n");
         }
     });
 };
