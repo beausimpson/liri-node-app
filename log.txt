@@ -1,0 +1,98 @@
+concert-this
+-------------
+[
+   "Cornerstone Craft Beer & Live Music",
+   "Berkeley",
+   "CA",
+   "United States",
+   "11/30/2018",
+   "-------------",
+   "Catalyst",
+   "Santa Cruz",
+   "CA",
+   "United States",
+   "12/02/2018",
+   "-------------",
+   "The Roxy Theatre",
+   "West Hollywood",
+   "CA",
+   "United States",
+   "12/05/2018",
+   "-------------",
+   "Bottom Lounge",
+   "Chicago",
+   "IL",
+   "United States",
+   "12/09/2018",
+   "-------------",
+   "Chop Suey",
+   "Seattle",
+   "WA",
+   "United States",
+   "12/12/2018",
+   "-------------",
+   "Hawthorne Theatre",
+   "Portland",
+   "OR",
+   "United States",
+   "12/13/2018",
+   "-------------",
+   "Launchpad",
+   "Albuquerque",
+   "NM",
+   "United States",
+   "12/15/2018",
+   "-------------",
+   "Meow Wolf",
+   "Santa Fe",
+   "NM",
+   "United States",
+   "12/17/2018",
+   "-------------",
+   "Crescent Ballroom",
+   "Phoenix",
+   "AZ",
+   "United States",
+   "12/18/2018",
+   "-------------",
+   "Observatory",
+   "Santa Ana",
+   "CA",
+   "United States",
+   "12/21/2018",
+   "-------------",
+   "Cervantes' Masterpiece Ballroom & Cervantes' Other Side",
+   "Denver",
+   "CO",
+   "United States",
+   "12/22/2018",
+   "-------------",
+   "Motorco Music Hall",
+   "Durham",
+   "NC",
+   "United States",
+   "03/07/2019",
+   "-------------"
+]
+-------------
+spotify-this-song
+-------------
+{
+   "Artist": "Rage Against The Machine",
+   "Song_Name": "Bulls On Parade",
+   "Preview_URL": "https://p.scdn.co/mp3-preview/9a0a212b91ae9561473158a58852f10d91a32440?cid=9c57c5e892154d2a8a8a9ba893731d3e",
+   "Album": "Evil Empire"
+}
+-------------
+movie-this
+-------------
+{
+   "Title": "Easy Rider",
+   "Released": "1969",
+   "IMDB_Rating": "7.4/10",
+   "Rotton_Tomatoes_Rating": "89%",
+   "Language": "English, Spanish",
+   "Plot": "Through the open country and desert lands, two bikers head from L.A to New Orleans, and along the way, meet a man who bridges a counter-culture gap they are unaware of.",
+   "Actors": "Peter Fonda, Dennis Hopper, Antonio Mendoza, Phil Spector"
+}
+-------------
