@@ -42,7 +42,7 @@ switch (command) {
         movieThis(nodeArgs);
         break;
     case 'do-what-it-says':
-        // logCommand();
+        logCommand();
         doWhatSays(nodeArgs);
         break;
 };
