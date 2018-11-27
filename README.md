@@ -14,6 +14,8 @@
 - Install the required Node packages:
     - ` npm install `
 
+#### Enter `node liri.js` to run program
+
 ### liri.js can take in one of the following commands:
 - `concert-this`
 
@@ -94,4 +96,9 @@ Example of do-what-it-says results:
 ### As a bonus feature:
 
 - The program will log all commands, returning data and the time stamp of when the command was run
-- All of the data is stored in  log.txt
+    - All of the data is stored in log.txt
+
+
+### Work in Progess:
+- Added Inquirer node package so that LIRI works from the command line
+    - `liri-with-inquirer.js` is still a work in progress
