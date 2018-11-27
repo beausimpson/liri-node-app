@@ -26,29 +26,30 @@ var omdb = process.env.OMDB_APIKEY;
 
 // logs the command in log.txt
 var command = process.argv[2];
+var nodeArgs = process.argv;
 // swtich statement for the user entered commands
 switch (command) {
     case 'concert-this':
         logCommand();
-        concertThis();
+        concertThis(nodeArgs);
         break;
     case 'spotify-this-song':
         logCommand();
-        spotifySong();
+        spotifySong(nodeArgs);
         break;
     case 'movie-this':
         logCommand();
-        movieThis();
+        movieThis(nodeArgs);
         break;
     case 'do-what-it-says':
         // logCommand();
-        randomFunction();
+        doWhatSays(nodeArgs);
         break;
 };
 
 // concert-this function -- Returns Upcoming Concert Info for User Submitted Band
-function concertThis() {
-    var nodeArgs = process.argv;
+function concertThis(nodeArgs) {
+    // nodeArgs = process.argv;
     var bandName = "";
     for (var i = 3; i < nodeArgs.length; i++) {
 
@@ -82,9 +83,9 @@ function concertThis() {
 };
 
 // spotify-this-song function -- Returns info for User entered Song Title
-function spotifySong() {
+function spotifySong(nodeArgs) {
     // fixes Node Argument issue if song has more than 1 word in name
-    var nodeArgs = process.argv;
+    // var nodeArgs = process.argv;
     var songName = "";
     for (var i = 3; i < nodeArgs.length; i++) {
 
@@ -124,7 +125,7 @@ function spotifySong() {
 // movie-this function -- Returns info for User entered Movie Title
 function movieThis() {
     // fixes Node Argument issue if movie has more than 1 word in title
-    var nodeArgs = process.argv;
+    // var nodeArgs = process.argv;
     var movieName = "";
     for (var i = 3; i < nodeArgs.length; i++) {
 
@@ -161,8 +162,8 @@ function movieThis() {
     );
 }
 
-// do-what-it-says function
-function randomFunction() {
+// do-what-it-says function -- reads random.txt file and take first index in string as command and second index as parameter
+function doWhatSays() {
     fs.readFile("random.txt", "utf8", function (error, data) {
         // If code experiences any errors, it will log error to console
         if (error) {
@@ -171,24 +172,20 @@ function randomFunction() {
 
         var output = data.split(",")
 
-        for (var i = 0; i < output.length; i++) {
-            console.log(output[i])
-        }
-
-        // switch (output[0]) {
-        //     case 'concert-this':
-        //         logCommand();
-        //         concertThis();
-        //         break;
-        //     case 'spotify-this-song':
-        //         logCommand();
-        //         spotifySong();
-        //         break;
-        //     case 'movie-this':
-        //         logCommand();
-        //         movieThis();
-        //         break;
-        // };
+        switch (output[0]) {
+            case 'concert-this':
+                logCommand();
+                concertThis(output[1]);
+                break;
+            case 'spotify-this-song':
+                logCommand();
+                spotifySong(output[1]);
+                break;
+            case 'movie-this':
+                logCommand();
+                movieThis(output[1]);
+                break;
+        };
     })
 }
 
