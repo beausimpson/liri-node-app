@@ -1,7 +1,9 @@
-
 // required node modules
 // dotenv package to read and set enviroment variables
 require("dotenv").config();
+
+// inquirer command line module
+var inquirer = require("inquirer");
 
 // node file system module
 var fs = require("fs");
@@ -25,39 +27,56 @@ var spotify = new Spotify(keys.spotify);
 var omdb = process.env.OMDB_APIKEY;
 
 // logs the command in log.txt
-var command = process.argv[2];
-var nodeArgs = process.argv;
-// swtich statement for the user entered commands
-switch (command) {
-    case 'concert-this':
-        logCommand();
-        concertThis(nodeArgs);
-        break;
-    case 'spotify-this-song':
-        logCommand();
-        spotifySong(nodeArgs);
-        break;
-    case 'movie-this':
-        logCommand();
-        movieThis(nodeArgs);
-        break;
-    case 'do-what-it-says':
-        logCommand();
-        doWhatSays(nodeArgs);
-        break;
-};
+// var command = process.argv[2];
+// var nodeArgs = process.argv;
+
+inquirer
+    .prompt([
+        {
+            type: "list",
+            name: "command",
+            message: "Select a Command: ",
+            choices: ["concert-this", "spotify-this-song", "movie-this", "do-what-it-says"]
+        }, {
+            type: "input",
+            name: "searchTerm",
+            message: "What would you like to search: "
+        }
+    ]).then(function (user) {
+
+        // swtich statement for the user entered commands
+        switch (user.command) {
+            case 'concert-this':
+                logCommand();
+                concertThis(user.searchTerm);
+                break;
+            case 'spotify-this-song':
+                logCommand();
+                spotifySong(user.searchTerm);
+                break;
+            case 'movie-this':
+                logCommand();
+                movieThis(user.searchTerm);
+                break;
+            case 'do-what-it-says':
+                logCommand();
+                doWhatSays(user.searchTerm);
+                break;
+        };
+
+    })
 
 // concert-this function -- Returns Upcoming Concert Info for User Submitted Band
-function concertThis(nodeArgs) {
+function concertThis(searchTerm) {
     // nodeArgs = process.argv;
     var bandName = "";
-    for (var i = 3; i < nodeArgs.length; i++) {
+    for (var i = 3; i < searchTerm.length; i++) {
 
-        if (i > 3 && i < nodeArgs.length) {
-            bandName = bandName + "+" + nodeArgs[i];
+        if (i > 3 && i < searchTerm.length) {
+            bandName = bandName + "+" + searchTerm[i];
         }
         else {
-            bandName += nodeArgs[i];
+            bandName += searchTerm[i];
         }
     }
 
@@ -83,17 +102,17 @@ function concertThis(nodeArgs) {
 };
 
 // spotify-this-song function -- Returns info for User entered Song Title
-function spotifySong(nodeArgs) {
+function spotifySong(searchTerm) {
     // fixes Node Argument issue if song has more than 1 word in name
     // var nodeArgs = process.argv;
     var songName = "";
-    for (var i = 3; i < nodeArgs.length; i++) {
+    for (var i = 3; i < searchTerm.length; i++) {
 
-        if (i > 3 && i < nodeArgs.length) {
-            songName = songName + "+" + nodeArgs[i];
+        if (i > 3 && i < searchTerm.length) {
+            songName = songName + "+" + searchTerm[i];
         }
         else {
-            songName += nodeArgs[i];
+            songName += searchTerm[i];
         }
     }
 
@@ -123,17 +142,17 @@ function spotifySong(nodeArgs) {
 };
 
 // movie-this function -- Returns info for User entered Movie Title
-function movieThis(nodeArgs) {
+function movieThis(searchTerm) {
     // fixes Node Argument issue if movie has more than 1 word in title
     // var nodeArgs = process.argv;
     var movieName = "";
-    for (var i = 3; i < nodeArgs.length; i++) {
+    for (var i = 3; i < searchTerm.length; i++) {
 
-        if (i > 3 && i < nodeArgs.length) {
-            movieName = movieName + "+" + nodeArgs[i];
+        if (i > 3 && i < searchTerm.length) {
+            movieName = movieName + "+" + searchTerm[i];
         }
         else {
-            movieName += nodeArgs[i];
+            movieName += searchTerm[i];
 
         }
     }
