@@ -18,10 +18,10 @@
   },
   "homepage": "https://github.com/beausimpson/liri-node-app#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "dotenv": "^6.1.0",
-    "inquirer": "^6.2.0",
-    "moment": "^2.22.2",
-    "node-spotify-api": "^1.0.7"
+    "axios": "^0.18.1",
+    "dotenv": "^6.2.0",
+    "inquirer": "^6.5.0",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.1.1"
   }
 }
